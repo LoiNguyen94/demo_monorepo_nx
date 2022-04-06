@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import { Header, Footer } from '@monomio/ui-shared'
+import { Header, Footer } from '@monomio/ui-shared';
 
 export function Index() {
   /*
@@ -9,10 +9,10 @@ export function Index() {
    */
   return (
     <div className={styles.page}>
-      <Header type={'partner'} />
+      <Header type={'partner'} bg="" />
       <div className="wrapper">
         <div className="container">
-          <div id="welcome" style={{ height: screen.height - 560 }}>
+          <div id="welcome" style={{}}>
             <h1>
               <span> Hello there, </span>
               Welcome partner 👋

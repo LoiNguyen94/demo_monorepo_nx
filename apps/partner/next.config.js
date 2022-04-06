@@ -9,6 +9,11 @@ const nextConfig = {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
+    swcMinify: true,
+    experimental: {
+      urlImports: ['https://cdn.skypack.dev'],
+      outputStandalone: true
+    },
   },
 };
 

@@ -1,20 +1,20 @@
 {
-  "root": "libs/util-formatters",
-  "sourceRoot": "libs/util-formatters/src",
+  "root": "libs/func-shares",
+  "sourceRoot": "libs/func-shares/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/util-formatters/**/*.ts"]
+        "lintFilePatterns": ["libs/func-shares/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/util-formatters"],
+      "outputs": ["coverage/libs/func-shares"],
       "options": {
-        "jestConfig": "libs/util-formatters/jest.config.js",
+        "jestConfig": "libs/func-shares/jest.config.js",
         "passWithNoTests": true
       }
     }

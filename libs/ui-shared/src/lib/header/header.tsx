@@ -1,21 +1,26 @@
 import styles from './header.module.scss';
-import Image from 'next/image'
-import Wobby from './../../../assets/wobby.png';
-
+import Image from 'next/image';
+import Wobby from './../../assets/wobby.png';
 /* eslint-disable-next-line */
+
 export interface HeaderProps {
-  type: string
+  type: string;
+  bg: string;
 }
 
 export function Header(props: HeaderProps) {
+  const { type, bg } = props;
   return (
-    <div className={styles['container']}>
-      <h1>Đây là cái đầu dùng chung đang được import ở {props.type}</h1>
+    <div
+      className={styles['container']}
+      style={bg ? { backgroundColor: bg } : {}}
+    >
+      <h1>Đây là cái đầu dùng chung đang được import ở {type}</h1>
       <Image
         src={Wobby}
         alt="Picture of the author"
-        // width={500} automatically provided
-        // height={500} automatically provided
+        width={100}
+        height={100}
         // blurDataURL="data:..." automatically provided
         // placeholder="blur" // Optional blur-up while loading
       />

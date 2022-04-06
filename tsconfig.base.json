@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@monomio/ui-shared": ["libs/ui-shared/src/index.ts"],
-      "@monomio/util-formatters": ["libs/util-formatters/src/index.ts"]
+      "@monomio/func-shares": ["libs/func-shares/src/index.ts"],
+      "@monomio/interfaces": ["libs/interfaces/src/index.ts"],
+      "@monomio/ui-shared": ["libs/ui-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

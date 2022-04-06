@@ -1,10 +1,10 @@
 import styles from './footer.module.scss';
-import Image from 'next/image'
-import Wobby from './../../../assets/wobby.png';
+import Image from 'next/image';
+import Wobby from './../../assets/wobby.png';
 
 /* eslint-disable-next-line */
 export interface FooterProps {
-  type: string
+  type: string;
 }
 
 export function Footer(props: FooterProps) {
@@ -14,10 +14,8 @@ export function Footer(props: FooterProps) {
       <Image
         src={Wobby}
         alt="Picture of the author"
-        // width={500} automatically provided
-        // height={500} automatically provided
-        // blurDataURL="data:..." automatically provided
-        // placeholder="blur" // Optional blur-up while loading
+        width={100}
+        height={100}
       />
     </div>
   );
