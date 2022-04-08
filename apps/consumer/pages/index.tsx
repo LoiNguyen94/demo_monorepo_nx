@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import { Header, Footer } from '@monomio/ui-shared';
 import { ItemPromotionDay } from '@monomio/interfaces';
-import { funcShares, funcChangeColor } from '@monomio/func-shares';
+import { funcChangeColor } from '@monomio/func-shares';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement } from './../store/slices/countSlice';
 
@@ -110,10 +110,11 @@ export function Index(props) {
   const [color, setColor] = useState('');
   const dispatch = useDispatch();
   const count = useSelector((state: any) => state.count);
+  const product = useSelector((state: any) => state?.AddProduct);
   const router = useRouter();
 
   useEffect(() => {
-    console.log(funcShares());
+    console.log(product);
   }, []);
 
   const handleClick = () => {
@@ -140,6 +141,11 @@ export function Index(props) {
           onClick={() => router.push('./product', undefined, { shallow: true })}
         >
           hàng hóa
+        </button>
+        <button
+          onClick={() => router.push('./info', undefined, { shallow: true })}
+        >
+          Go Extra Info
         </button>
       </div>
       <div style={{ textAlign: 'center' }}>

@@ -20,6 +20,7 @@ const counterSlice = createSlice({
   reducers: {
     setProduct(state, action) {
       state = action.payload;
+      return state;
     },
   },
 });
