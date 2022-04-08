@@ -1,8 +1,13 @@
 // import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { formatMoneyVND } from '@monomio/func-shares';
+import { Row, Col, Card, PageHeader } from 'antd';
 
-export function Index({ hero }) {
-  const count = useSelector((state: any) => state.count);
+const { Meta } = Card;
+
+export function Index({ data }) {
+  const router = useRouter();
 
   //   useEffect(() => {
 
@@ -10,23 +15,70 @@ export function Index({ hero }) {
 
   return (
     <div>
-      <h1>{count?.value}</h1>
-      <h2>{hero[0]?.name}</h2>
+      <PageHeader
+        className="site-page-header"
+        onBack={() => router.back()}
+        title="Trang chủ"
+        subTitle="Tất cả sản phẩm trang chủ"
+      />
+      <Row style={{ marginLeft: 0, marginRight: 0 }} gutter={[16, 16]}>
+        {data &&
+          data.map(
+            (item: any) =>
+              item.photo && (
+                <Col
+                  lg={4}
+                  sm={6}
+                  xs={8}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                  }}
+                  key={item.id}
+                  //   span={4}
+                >
+                  <Card
+                    hoverable
+                    style={{ width: 240 }}
+                    cover={
+                      <Image
+                        alt="example"
+                        src={item?.photo}
+                        width={240}
+                        height={230}
+                        priority
+                      />
+                    }
+                    actions={[
+                      <div key="price">
+                        {formatMoneyVND(item?.market_price)}
+                      </div>,
+                      <Image
+                        key="plus"
+                        alt="example"
+                        src={'/pluscart.png'}
+                        width={24}
+                        height={24}
+                        priority
+                      />,
+                    ]}
+                  >
+                    <Meta title={item?.name} description={item?.category} />
+                  </Card>
+                </Col>
+              )
+          )}
+      </Row>
     </div>
   );
 }
 
 export async function getStaticProps(context) {
-  return {
-    props: {
-      hero: [
-        {
-          id: 1,
-          name: 'Super Man',
-        },
-      ],
-    }, // will be passed to the page component as props
-  };
+  // Fetch data from external API
+  const res = await fetch(`https://dev-api.itaphoa.com/customer/products`);
+  const data = await res.json();
+  // Pass data to the page via props
+  return { props: { data } };
 }
 
 export default Index;
