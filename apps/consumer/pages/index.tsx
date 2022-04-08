@@ -128,19 +128,23 @@ export function Index(props) {
   return (
     <div className={styles.page}>
       <Header type={'consumer'} bg={color} />
-      <button onClick={() => dispatch(increment(count))}>Increment</button>
-      <button onClick={() => dispatch(decrement(count))}>Decrement</button>
-      <button
-        onClick={() => router.push('./home', undefined, { shallow: true })}
-      >
-        gohhome
-      </button>
-      <button
-        onClick={() => router.push('./product', undefined, { shallow: true })}
-      >
-        hàng hóa
-      </button>
-      <h1>{count?.value}</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button
+          onClick={() => router.push('./home', undefined, { shallow: true })}
+        >
+          gohhome
+        </button>
+        <button
+          onClick={() => router.push('./product', undefined, { shallow: true })}
+        >
+          hàng hóa
+        </button>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <h1>{count?.value}</h1>
+      </div>
       <div onClick={handleClick}>Click đây đổi màu header nè</div>
       <div className="wrapper">
         <div className="container">

@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+import { HYDRATE } from 'next-redux-wrapper';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface CounterState {
@@ -12,11 +14,15 @@ const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    increment(state, action) {
+    increment(state, action: AnyAction) {
       state.value += 1;
+      // return { ...state, ...action.payload };
+      return state;
     },
-    decrement(state, action) {
+    decrement(state, action: AnyAction) {
       state.value -= 1;
+      // return { ...state, ...action.payload };
+      return state;
     },
   },
 });
