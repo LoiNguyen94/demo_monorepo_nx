@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import styles from './index.module.scss';
 import { Header, Footer } from '@monomio/ui-shared';
 import { ItemPromotionDay } from '@monomio/interfaces';
 import { funcShares, funcChangeColor } from '@monomio/func-shares';
+=======
+import { useRouter } from 'next/router';
+import styles from './index.module.scss';
+import { Header, Footer } from '@monomio/ui-shared';
+import { ItemPromotionDay } from '@monomio/interfaces';
+import { funcChangeColor } from '@monomio/func-shares';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './../store/slices/countSlice';
+>>>>>>> ed703815911de717f00e35ea454c911afedb64dc
 
 export const items: ItemPromotionDay[] = [
   {
@@ -103,11 +113,23 @@ export const items: ItemPromotionDay[] = [
   },
 ];
 
+<<<<<<< HEAD
 export function Index() {
   const [color, setColor] = useState('');
 
   useEffect(() => {
     console.log(funcShares());
+=======
+export function Index(props) {
+  const [color, setColor] = useState('');
+  const dispatch = useDispatch();
+  const count = useSelector((state: any) => state.count);
+  const product = useSelector((state: any) => state?.AddProduct);
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(product);
+>>>>>>> ed703815911de717f00e35ea454c911afedb64dc
   }, []);
 
   const handleClick = () => {
@@ -122,6 +144,31 @@ export function Index() {
   return (
     <div className={styles.page}>
       <Header type={'consumer'} bg={color} />
+<<<<<<< HEAD
+=======
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button
+          onClick={() => router.push('./home', undefined, { shallow: true })}
+        >
+          gohhome
+        </button>
+        <button
+          onClick={() => router.push('./product', undefined, { shallow: true })}
+        >
+          hàng hóa
+        </button>
+        <button
+          onClick={() => router.push('./info', undefined, { shallow: true })}
+        >
+          Go Extra Info
+        </button>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <h1>{count?.value}</h1>
+      </div>
+>>>>>>> ed703815911de717f00e35ea454c911afedb64dc
       <div onClick={handleClick}>Click đây đổi màu header nè</div>
       <div className="wrapper">
         <div className="container">
