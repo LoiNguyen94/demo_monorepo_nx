@@ -2,13 +2,26 @@ import { Card, PageHeader, Divider, Button } from 'antd';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { formatMoneyVND } from '@monomio/func-shares';
+import { useState } from 'react';
 
 const StaticPropsDetail = ({ detail, errors }: any) => {
   const router = useRouter();
+  const [quantity, setQuantity] = useState(0);
 
   if (errors) {
     return <span style={{ color: 'red' }}>ERR: {errors}</span>;
   }
+
+  const handleQuan = (key: number) => {
+    switch (key) {
+      case 1:
+        if (quantity !== 0) setQuantity(quantity - 1);
+        break;
+      case 2:
+        setQuantity(quantity + 1);
+        break;
+    }
+  };
 
   return (
     <>
@@ -45,6 +58,32 @@ const StaticPropsDetail = ({ detail, errors }: any) => {
                   priority
                 />
                 <Divider />
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: 24,
+                  }}
+                >
+                  <Button
+                    onClick={() => handleQuan(1)}
+                    style={{ fontSize: 14 }}
+                    type="text"
+                    danger
+                  >
+                    -
+                  </Button>
+                  <div>{quantity}</div>
+                  <Button
+                    onClick={() => handleQuan(2)}
+                    style={{ fontSize: 14 }}
+                    type="text"
+                    danger
+                  >
+                    +
+                  </Button>
+                </div>
                 <div style={{ width: '100%', marginBottom: 20 }}>
                   <div style={{ fontWeight: 'bold' }}>{detail?.name}</div>
                   <div style={{ color: 'red' }}>
