@@ -1,17 +1,20 @@
-// import { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { formatMoneyVND } from '@monomio/func-shares';
 import { Row, Col, Card, PageHeader } from 'antd';
+import { useEffect } from 'react';
 
 const { Meta } = Card;
 
-export function Index({ data }) {
+function Index({ data }) {
+  useEffect(() => {
+    localStorage.setItem('listpro', JSON.stringify(data));
+  }, []);
   const router = useRouter();
 
-  //   useEffect(() => {
-
-  //   }, []);
+  const goDetail = (id: string) => {
+    router.push(`home/${id}`);
+  };
 
   return (
     <div>
@@ -39,6 +42,7 @@ export function Index({ data }) {
                   //   span={4}
                 >
                   <Card
+                    onClick={() => goDetail(item?.id)}
                     hoverable
                     style={{ width: 240 }}
                     cover={
