@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Row, Col } from 'antd';
 import styles from './index.module.scss';
 import { Header, Footer } from '@monomio/ui-shared';
+import ModalLoading from '../components/commons/LoadingChangePage';
 import { ItemPromotionDay } from '@monomio/interfaces';
 import { funcChangeColor } from '@monomio/func-shares';
 import { useDispatch, useSelector } from 'react-redux';
@@ -109,13 +110,24 @@ export const items: ItemPromotionDay[] = [
 
 export function Index(props) {
   const [color, setColor] = useState('');
+  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const count = useSelector((state: any) => state.count);
-  const product = useSelector((state: any) => state?.AddProduct);
+  // const product = useSelector((state: any) => state?.AddProduct);
   const router = useRouter();
 
   useEffect(() => {
-    console.log(product);
+    const handleRouteChange = (url, { shallow }) => {
+      setVisible(true);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
   }, []);
 
   const handleClick = () => {
@@ -130,6 +142,7 @@ export function Index(props) {
   return (
     <div className={styles.page}>
       <Header type={'consumer'} bg={color} />
+      <ModalLoading isModalVisible={visible} />
       <div style={{ padding: 10 }}>
         <Row style={{ marginLeft: 0, marginRight: 0 }} gutter={[16, 16]}>
           <Col
