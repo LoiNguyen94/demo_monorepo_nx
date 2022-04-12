@@ -30,10 +30,10 @@ const ModalLoading = (props: ModalLoadingProps) => {
         footer={null}
         closable={false}
         centered={true}
-        bodyStyle={{ backgroundColor: 'navajowhite' }}
+        // bodyStyle={{ backgroundColor: 'navajowhite' }}
       >
         <div style={{ width: '100%', textAlign: 'center' }}>
-          <h1>{conutLoadTime}</h1>
+          {/* <h1>{conutLoadTime}</h1> */}
           <Spin />
         </div>
       </Modal>
