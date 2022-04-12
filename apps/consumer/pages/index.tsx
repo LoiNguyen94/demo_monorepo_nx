@@ -1,10 +1,4 @@
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
-import styles from './index.module.scss';
-import { Header, Footer } from '@monomio/ui-shared';
-import { ItemPromotionDay } from '@monomio/interfaces';
-import { funcShares, funcChangeColor } from '@monomio/func-shares';
-=======
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import { Header, Footer } from '@monomio/ui-shared';
@@ -12,7 +6,6 @@ import { ItemPromotionDay } from '@monomio/interfaces';
 import { funcChangeColor } from '@monomio/func-shares';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement } from './../store/slices/countSlice';
->>>>>>> ed703815911de717f00e35ea454c911afedb64dc
 
 export const items: ItemPromotionDay[] = [
   {
@@ -113,13 +106,6 @@ export const items: ItemPromotionDay[] = [
   },
 ];
 
-<<<<<<< HEAD
-export function Index() {
-  const [color, setColor] = useState('');
-
-  useEffect(() => {
-    console.log(funcShares());
-=======
 export function Index(props) {
   const [color, setColor] = useState('');
   const dispatch = useDispatch();
@@ -129,7 +115,6 @@ export function Index(props) {
 
   useEffect(() => {
     console.log(product);
->>>>>>> ed703815911de717f00e35ea454c911afedb64dc
   }, []);
 
   const handleClick = () => {
@@ -144,8 +129,6 @@ export function Index(props) {
   return (
     <div className={styles.page}>
       <Header type={'consumer'} bg={color} />
-<<<<<<< HEAD
-=======
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <button onClick={() => dispatch(increment())}>Increment</button>
         <button onClick={() => dispatch(decrement())}>Decrement</button>
@@ -168,7 +151,6 @@ export function Index(props) {
       <div style={{ textAlign: 'center' }}>
         <h1>{count?.value}</h1>
       </div>
->>>>>>> ed703815911de717f00e35ea454c911afedb64dc
       <div onClick={handleClick}>Click đây đổi màu header nè</div>
       <div className="wrapper">
         <div className="container">
