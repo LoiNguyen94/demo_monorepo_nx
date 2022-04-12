@@ -2,14 +2,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { formatMoneyVND } from '@monomio/func-shares';
 import { Row, Col, Card, PageHeader } from 'antd';
-import { useEffect } from 'react';
 
 const { Meta } = Card;
 
 function Index({ data }) {
-  useEffect(() => {
-    localStorage.setItem('listpro', JSON.stringify(data));
-  }, []);
+
   const router = useRouter();
 
   const goDetail = (id: string) => {
