@@ -1,6 +1,7 @@
-import { Card, PageHeader } from 'antd';
+import { Card, PageHeader, Divider, Button } from 'antd';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { formatMoneyVND } from '@monomio/func-shares';
 
 const StaticPropsDetail = ({ detail, errors }: any) => {
   const router = useRouter();
@@ -43,8 +44,35 @@ const StaticPropsDetail = ({ detail, errors }: any) => {
                   height={230}
                   priority
                 />
-                <div>{detail?.name}</div>
-                <div>{detail?.info?.description}</div>
+                <Divider />
+                <div style={{ width: '100%', marginBottom: 20 }}>
+                  <div style={{ fontWeight: 'bold' }}>{detail?.name}</div>
+                  <div style={{ color: 'red' }}>
+                    {formatMoneyVND(detail?.market_price)}
+                  </div>
+                  <div>
+                    tags: <br />
+                    <div
+                      style={{
+                        padding: '5px 10px',
+                        backgroundColor: '#f3951f',
+                        borderRadius: 8,
+                        color: '#ffffff',
+                        width: 'fit-content',
+                      }}
+                    >
+                      {detail?.info?.tags}
+                    </div>
+                  </div>
+                </div>
+                <Button style={{ width: '100%' }} type="primary">
+                  Thêm vào giỏ hàng
+                </Button>
+                <Divider />
+                <div>
+                  <div style={{ fontWeight: 'bold' }}> Miêu tả:</div>
+                  {detail?.info?.description}
+                </div>
               </div>
             )}
           </Card>
