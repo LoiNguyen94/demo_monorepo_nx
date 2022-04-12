@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import './styles.css';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 // import withRedux from 'next-redux-wrapper';
 // import { initializeStore } from './../store/store';\
 import { wrapper } from './../store/store';
