@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from '@reduxjs/toolkit';
 
-import count from './slices/countSlice'
-import AddProduct from './slices/addProductSlice'
+import count from './slices/countSlice';
+import AddProduct from './slices/addProductSlice';
 
-const reducers = combineReducers({ 
+const reducers = combineReducers({
   count,
-  AddProduct
-})
+  AddProduct,
+});
 
 export default reducers;
