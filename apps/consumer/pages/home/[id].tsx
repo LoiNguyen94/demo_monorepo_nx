@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { formatMoneyVND } from '@monomio/func-shares';
 import { useState } from 'react';
 
-const StaticPropsDetail = ({ detail, errors }: any) => {
+const DetailPro = ({ detail, errors }: any) => {
   const router = useRouter();
   const [quantity, setQuantity] = useState(1);
 
@@ -121,7 +121,7 @@ const StaticPropsDetail = ({ detail, errors }: any) => {
   );
 };
 
-export default StaticPropsDetail;
+export default DetailPro;
 
 export const getStaticPaths = async () => {
   const res = await fetch(`https://dev-api.itaphoa.com/customer/products`);

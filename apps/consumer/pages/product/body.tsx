@@ -3,6 +3,7 @@ import { Row, Col, Card } from 'antd';
 import styles from './product.module.scss';
 import Image from 'next/image';
 import { formatMoneyVND } from '@monomio/func-shares';
+import Link from 'next/link';
 
 const { Meta } = Card;
 
@@ -29,34 +30,38 @@ export function Body({ data }) {
                 key={item.id}
                 //   span={4}
               >
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <Image
-                      alt="example"
-                      src={item?.photo}
-                      width={240}
-                      height={230}
-                      priority
-                    />
-                  }
-                  actions={[
-                    <div key="price" className={styles['rainbow']}>
-                      {formatMoneyVND(item?.market_price)}
-                    </div>,
-                    <Image
-                      key="plus"
-                      alt="example"
-                      src={'/pluscart.png'}
-                      width={24}
-                      height={24}
-                      priority
-                    />,
-                  ]}
-                >
-                  <Meta title={item?.name} description={item?.category} />
-                </Card>
+                <Link href={`/product/${item?.id}`}>
+                  <a>
+                    <Card
+                      hoverable
+                      style={{ width: 240 }}
+                      cover={
+                        <Image
+                          alt="example"
+                          src={item?.photo}
+                          width={240}
+                          height={230}
+                          priority
+                        />
+                      }
+                      actions={[
+                        <div key="price" className={styles['rainbow']}>
+                          {formatMoneyVND(item?.market_price)}
+                        </div>,
+                        <Image
+                          key="plus"
+                          alt="example"
+                          src={'/pluscart.png'}
+                          width={24}
+                          height={24}
+                          priority
+                        />,
+                      ]}
+                    >
+                      <Meta title={item?.name} description={item?.category} />
+                    </Card>
+                  </a>
+                </Link>
               </Col>
             )
         )}
