@@ -15,8 +15,9 @@ export function Body({ data }) {
     <Row style={{ marginLeft: 0, marginRight: 0 }} gutter={[16, 16]}>
       {data &&
         data.map(
-          (item: any) =>
-            item.photo && (
+          (item: any, index: number) =>
+            item.photo &&
+            index < 30 && (
               <Col
                 lg={4}
                 sm={6}

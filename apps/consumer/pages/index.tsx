@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Button, Row, Col } from 'antd';
 import styles from './index.module.scss';
 import { Header, Footer } from '@monomio/ui-shared';
 import { ItemPromotionDay } from '@monomio/interfaces';
@@ -129,27 +130,80 @@ export function Index(props) {
   return (
     <div className={styles.page}>
       <Header type={'consumer'} bg={color} />
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <button onClick={() => dispatch(increment())}>Increment</button>
-        <button onClick={() => dispatch(decrement())}>Decrement</button>
-        <button
-          onClick={() => router.push('./home', undefined, { shallow: true })}
-        >
-          gohhome
-        </button>
-        <button
-          onClick={() => router.push('./product', undefined, { shallow: true })}
-        >
-          hàng hóa
-        </button>
-        <button
-          onClick={() => router.push('./info', undefined, { shallow: true })}
-        >
-          Go Extra Info
-        </button>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <h1>{count?.value}</h1>
+      <div style={{ padding: 10 }}>
+        <Row style={{ marginLeft: 0, marginRight: 0 }} gutter={[16, 16]}>
+          <Col
+            lg={6}
+            style={{
+              textAlign: 'center',
+            }}
+            //   span={4}
+          >
+            <h1 className={styles['single_header']}>Demo redux in project</h1>
+            <div>
+              <Button type="primary" onClick={() => dispatch(increment())}>
+                Increment
+              </Button>
+              <Button type="primary" onClick={() => dispatch(decrement())}>
+                Decrement
+              </Button>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <h1>{count?.value}</h1>
+            </div>
+          </Col>
+          <Col
+            lg={6}
+            style={{
+              textAlign: 'center',
+            }}
+            //   span={4}
+          >
+            <h1 className={styles['single_header']}>Demo getStaticProps</h1>
+            <Button
+              type="primary"
+              onClick={() =>
+                router.push('./home', undefined, { shallow: true })
+              }
+            >
+              Go getStaticProps
+            </Button>
+          </Col>
+          <Col
+            lg={6}
+            style={{
+              textAlign: 'center',
+            }}
+            //   span={4}
+          >
+            <h1 className={styles['single_header']}>Demo getServerSideProps</h1>
+            <Button
+              type="primary"
+              onClick={() =>
+                router.push('./product', undefined, { shallow: true })
+              }
+            >
+              Go getServerSideProps
+            </Button>
+          </Col>
+          <Col
+            lg={6}
+            style={{
+              textAlign: 'center',
+            }}
+            //   span={4}
+          >
+            <h1 className={styles['single_header']}>Demo redux in UI share</h1>
+            <Button
+              type="primary"
+              onClick={() =>
+                router.push('./info', undefined, { shallow: true })
+              }
+            >
+              Go Extra Info
+            </Button>
+          </Col>
+        </Row>
       </div>
       <div onClick={handleClick}>Click đây đổi màu header nè</div>
       <div className="wrapper">

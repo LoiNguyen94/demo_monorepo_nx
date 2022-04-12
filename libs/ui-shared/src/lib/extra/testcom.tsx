@@ -1,6 +1,8 @@
-import { setPriority } from 'os';
+import dynamic from 'next/dynamic';
+import { Button } from 'antd';
 
 /* eslint-disable-next-line */
+const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 export interface TestComProps {
   getPro: any;
   setPro: any;
@@ -9,9 +11,10 @@ export interface TestComProps {
 
 export function TestCom(props: TestComProps) {
   const { getPro, setPro, slice } = props;
+
   const randomNumber = () => {
     const data = {
-      id: 1,
+      id: Math.floor(Math.random() * 1114) - 111,
       value: Math.floor(Math.random() * 1114),
     };
     setPro(slice(data));
@@ -21,9 +24,11 @@ export function TestCom(props: TestComProps) {
     <div className={'container'}>
       <div>
         Dữ liệu
-        {JSON.stringify(getPro)}
+        <DynamicReactJson src={getPro} />
       </div>
-      <div onClick={randomNumber}>Click để truyền giá trị</div>
+      <Button type="primary" onClick={randomNumber}>
+        Click để truyền giá trị
+      </Button>
     </div>
   );
 }
