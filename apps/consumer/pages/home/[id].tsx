@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const StaticPropsDetail = ({ detail, errors }: any) => {
   const router = useRouter();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   if (errors) {
     return <span style={{ color: 'red' }}>ERR: {errors}</span>;
@@ -15,7 +15,7 @@ const StaticPropsDetail = ({ detail, errors }: any) => {
   const handleQuan = (key: number) => {
     switch (key) {
       case 1:
-        if (quantity !== 0) setQuantity(quantity - 1);
+        if (quantity >= 2) setQuantity(quantity - 1);
         break;
       case 2:
         setQuantity(quantity + 1);
@@ -87,7 +87,7 @@ const StaticPropsDetail = ({ detail, errors }: any) => {
                 <div style={{ width: '100%', marginBottom: 20 }}>
                   <div style={{ fontWeight: 'bold' }}>{detail?.name}</div>
                   <div style={{ color: 'red' }}>
-                    {formatMoneyVND(detail?.market_price)}
+                    {formatMoneyVND(parseInt(detail?.market_price) * quantity)}
                   </div>
                   <div>
                     tags: <br />
