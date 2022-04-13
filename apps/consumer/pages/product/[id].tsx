@@ -29,6 +29,8 @@ const DetailPro = ({ detail, errors }: any) => {
       <Head>
         <title>{detail?.name}</title>
         <meta property="og:title" content={detail?.name} key="title" />
+        <meta property="og:description" content={detail?.log_time} />
+        <meta property="og:image" content={detail?.photo} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
