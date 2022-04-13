@@ -1,4 +1,5 @@
 import { Card, PageHeader, Divider, Button } from 'antd';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { formatMoneyVND } from '@monomio/func-shares';
@@ -21,10 +22,15 @@ const DetailPro = ({ detail, errors }: any) => {
         break;
     }
   };
-  console.log(detail)
+  console.log(detail);
 
   return (
     <>
+      <Head>
+        <title>{detail?.name}</title>
+        <meta property="og:title" content={detail?.name} key="title" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div>
         <PageHeader
           className="site-page-header"
